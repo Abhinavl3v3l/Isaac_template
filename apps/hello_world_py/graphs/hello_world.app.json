@@ -1,0 +1,52 @@
+{
+    "name": "hello_world",
+    "modules": [
+        "//apps/hello_world_cpp:sender",
+        "//apps/hello_world_cpp:receiver",
+        "@com_nvidia_isaac_sdk//packages/sight"
+    ],
+    "graph": {
+        "nodes": [
+            {
+                "name": "sender",
+                "components": [
+                    {
+                        "name": "ledger",
+                        "type": "isaac::alice::MessageLedger"
+                    },
+                    {
+                        "name": "sender_component",
+                        "type": "isaac::Sender"
+                    }
+                ]
+            },
+            {
+                "name": "receiver",
+                "components": [
+                    {
+                        "name": "ledger",
+                        "type": "isaac::alice::MessageLedger"
+                    },
+                    {
+                        "name": "receiver_component",
+                        "type": "isaac::Receiver"
+                    }
+                ]
+            }
+        ],
+        "edges": [
+            {
+                "source": "sender/sender_component/number",
+                "target": "receiver/receiver_component/number"
+            }
+        ]
+    },
+    "config": {
+        "sender": {
+            "sender_component": {
+                "number": 3,
+                "tick_period": "1Hz"
+            }
+        }
+    }
+}

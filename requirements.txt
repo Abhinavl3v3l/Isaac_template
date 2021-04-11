@@ -1,0 +1,11 @@
+## Uncomment to install tensorflow
+# tensorflow-gpu==1.15.0
+# keras==2.3.1
+# tf2onnx==1.7.2
+
+## Uncomment to install deps for object pose estimation training
+# tensorflow-graphics-gpu==1.0.0
+
+## Uncomment to install Pytorch
+# torch==1.6.0
+# torchvision==0.7.0

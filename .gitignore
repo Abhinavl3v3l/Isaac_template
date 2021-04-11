@@ -1,0 +1,7 @@
+bazel*
+.vscode/
+__pycache__/
+
+cscope.*
+*.pyc
+build/

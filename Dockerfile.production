@@ -1,0 +1,20 @@
+##############################################
+# Compiling project
+##############################################
+FROM firekind/isaac:2020.2 AS builder
+
+ARG package
+
+COPY ./ /workspace
+
+# building application for jetpack 44
+WORKDIR /workspace
+RUN ./deploy.sh -d jetpack44 -h localhost --tar_only -p $package
+RUN mkdir build/target && tar -xf build/build.tar -C build/target
+
+
+##############################################
+# copying build result to aarch64 image
+##############################################
+FROM firekind/isaac:jetson
+COPY --from=builder /workspace/build/target/ /root/deploy/isaac_app

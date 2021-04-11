@@ -1,0 +1,14 @@
+{
+    "name": "isaac-application",
+    "dockerFile": "../Dockerfile",
+    "runArgs": [
+        "--gpus=all",
+        "--net=host",
+        "--privileged"
+        // add a device (eg: V4L2 camera)
+        // "--device=/dev/video2"
+    ],
+    "mounts": [
+        "source=isaac-sdk-build-cache,target=/root"
+    ]
+}
